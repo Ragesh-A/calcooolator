@@ -1,0 +1,264 @@
+:root {
+    --blue: #006aff;
+    --btn: #252934;
+    --btn-2: #363e4b;
+    --dark: #161920;
+    --screen: #21252e;
+    --font-clr: #fff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(45deg, black,var(--blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: "bankgothic lt bt", Helvetica, sans-serif;
+}
+
+.calculator-body {
+    width: 300px;
+    height: 35rem;
+    background-color: var(--dark);
+    border: 5px solid var(--font-clr);
+    border-radius: 25px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.navigation {
+    margin-top: 1rem;
+    height: 1rem;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.toggle {
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    z-index: 2;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toggle span {
+    display: block;
+    background-color: var(--font-clr);
+    width: 20px;
+    height: 3px;
+    position: relative;
+    cursor: pointer;
+}
+
+.toggle span::before,
+.toggle span::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 3px;
+    background-color: var(--font-clr);
+}
+
+.toggle span::before {
+    top: -6px;
+    transition: .2s;
+}
+
+.toggle span::after {
+    bottom: -6px;
+    transition: .2s;
+}
+.toggle.active span {
+    background-color: transparent;
+}
+.toggle.active span::before {
+    transform: rotate(221deg);
+    top: 1px;
+}
+.toggle.active span::after {
+    transform: rotate(135deg);
+    bottom: 0.25px;
+}
+.menu-wrap {
+    position: absolute;
+    z-index: 1;
+    left: 20rem;
+    top: 0.1rem;
+    width: 290px;
+    height: 33.4rem;
+    border-radius: 22px;
+    background-color: var(--dark);
+    padding: 1rem;
+    overflow: hidden;
+    transition: 0.5s;
+}
+.menu-wrap.active {
+    left: 0;
+}
+
+.menu {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.menu::after {
+    position: absolute;
+    content: "";
+    background-color: var(--blue);
+    width: 335px;
+    height: 10rem;
+    bottom: -2rem;
+    left: -3rem;
+    transform: rotate(17deg);
+}
+
+.menu p {
+    margin-top: 1rem;
+    color: var(--font-clr);
+    font-size: 14px;
+    text-align: center;
+    position: relative;
+}
+
+.menu p::before,
+.menu p::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 2px;
+    background-color: gray;
+    top: 40%;
+}
+
+.menu p::before {
+    left: 3rem;
+}
+
+.menu p::after {
+    right: 3rem;
+}
+
+.menu .colors {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+}
+
+.menu .colors span {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: var(--i);
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid rgb(197, 196, 196);
+}
+.menu > hr {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.nav-bar {
+    margin: 0.75rem;
+    border-radius: 5px;
+    background-color: var(--btn-2);
+}
+
+ul {
+    display: flex;
+}
+
+ul li {
+    list-style: none;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    width: 100%;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.actived {
+    background-color: var(--blue);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.screen {
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: right;
+    padding: 0 0.5rem;
+}
+
+.screen-1 {
+    background-color: transparent;
+    color: var(--font-clr);
+    font-size: 2.7rem;
+    height: 4rem;
+    margin-top: 2rem;
+}
+
+.screen-2 {
+    background-color: var(--screen);
+    color: #d2d3d4;
+    height: 2rem;
+    letter-spacing: 2px;
+}
+
+.buttons {
+    padding: 0.75rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+}
+
+.btn {
+    color: var(--font-clr);
+    background-color: var(--btn);
+    border: 2px solid transparent;
+    height: 3.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn:hover {
+    border-color: var(--font-clr);
+}
+
+.special {
+    background-color: var(--btn-2);
+}
+
+.operator {
+    background-color: var(--blue);
+}
+
+.zero {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}

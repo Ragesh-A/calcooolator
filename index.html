@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="calculator-body">
+
+        <div class="navigation">
+
+            <div class="toggle che"><span></span></div>
+
+            <div class="menu-wrap">
+                <div class="menu">
+                    <p>Themes</p>
+                    <div class="colors">
+                        <span class="theme-btn" data-color="#006aff" style="--i:#006aff"></span>
+                        <span class="theme-btn" data-color="#ffa201" style="--i:#ffa201"></span>
+                        <hr>
+                        <span class="theme-btn2" data-color="#000" style=" background-color: #000;"></span>
+                        <span class="theme-btn2" data-color="#fff" style=" background-color: #fff;"></span>
+
+                    </div>
+                    <hr>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-bar">
+            <ul>
+                <li><a href="#" class="actived">Calculator</a></li>
+                <li><a href="#">Convertor</a></li>
+            </ul>
+        </div>
+        <div class="screens">
+            <input type="text2" class="screen screen-1">
+            <input type="text" class="screen screen-2">
+        </div>
+        <div class="buttons">
+            <input type="button" onclick="screenClear()" value="AC" class="btn special">
+            <input type="button" onclick="" value="+/-" class="btn special">
+            <input type="button" onclick="btnClick(value)" value="%" class="btn special">
+            <input type="button" onclick="btnClick(value)" value="/" class="btn operator">
+            <input type="button" onclick="btnClick(value)" value="7" class="btn">
+            <input type="button" onclick="btnClick(value)" value="8" class="btn">
+            <input type="button" onclick="btnClick(value)" value="9" class="btn">
+            <input type="button" onclick="btnClick(value)" value="*" class="btn operator">
+            <input type="button" onclick="btnClick(value)" value="4" class="btn">
+            <input type="button" onclick="btnClick(value)" value="5" class="btn">
+            <input type="button" onclick="btnClick(value)" value="6" class="btn">
+            <input type="button" onclick="btnClick(value)" value="-" class="btn operator">
+            <input type="button" onclick="btnClick(value)" value="1" class="btn">
+            <input type="button" onclick="btnClick(value)" value="2" class="btn">
+            <input type="button" onclick="btnClick(value)" value="3" class="btn">
+            <input type="button" onclick="btnClick(value)" value="+" class="btn operator">
+            <input type="button" onclick="btnClick(value)" value="0" class="btn zero">
+            <input type="button" onclick="btnClick(value)" value="." class="btn">
+            <input type="button" onclick="findResult()" value="=" class="btn operator">
+        </div>
+
+    </div>
+
+    <script>
+
+        let screen1 = document.querySelector('.screen-1');
+        let screen2 = document.querySelector('.screen-2');
+
+        function btnClick(value) {
+            screen2.value += value;
+        }
+
+        function findResult() {
+            let result1 = eval(screen2.value);
+            screen1.value = result1;
+            console.log(result1);
+        }
+
+        function screenClear() {
+            screen2.value = '';
+            screen1.value = '';
+        }
+        /*-------------------------theme-section--------------------*/
+        document.querySelector('.che').onclick = () => {
+            document.querySelector('.menu-wrap').classList.toggle('active');
+            document.querySelector('.toggle').classList.toggle('active');
+        };
+
+        let themebtns = document.querySelectorAll('.theme-btn');
+        themebtns.forEach(color => {
+            color.addEventListener('click', () => {
+                let dataColor = color.getAttribute('data-color');
+                document.querySelector(':root').style.setProperty('--blue', dataColor)
+            })
+        });
+
+        let themebtns2 = document.querySelectorAll('.theme-btn2');
+        themebtns2.forEach(color => {
+            color.addEventListener('click', () => {
+                let dataColor2 = color.getAttribute('data-color');
+                document.querySelector(':root').style.setProperty('--dark', dataColor2)
+                if (dataColor2 == '#fff') {
+                    document.querySelector(':root').style.setProperty('--font-clr', '#000')
+                    document.querySelector(':root').style.setProperty('--btn', '#d8d8d8')
+                    document.querySelector(':root').style.setProperty('--btn2', 'red')
+                }
+                else {
+                    document.querySelector(':root').style.setProperty('--font-clr', '#fff')
+                    document.querySelector(':root').style.setProperty('--btn', '#252934')
+                }
+            })
+        });
+    </script>
+
+</body>
+
+</html>
